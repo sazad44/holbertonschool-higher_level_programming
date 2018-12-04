@@ -5,6 +5,6 @@ for x in range(10):
             print("{}".format(x), end="")
             print("{}".format(y), end="")
             if x == 8 and y == 9:
-                print("".format())
+                print("{:s}".format(""))
             else:
-                print("".format(), end=", ")
+                print("{:s}".format(""), end=", ")
