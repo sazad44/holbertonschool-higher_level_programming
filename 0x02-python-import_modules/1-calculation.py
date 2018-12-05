@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-import calculator_1 as calc
+import calculator_1 as op
 if __name__ == "__main__":
     a = 10
     b = 5
-    print("{} + {} = {}".format(a, b, calc.add(a, b)))
-    print("{} - {} = {}".format(a, b, calc.sub(a, b)))
-    print("{} * {} = {}".format(a, b, calc.mul(a, b)))
-    print("{} / {} = {}".format(a, b, calc.div(a, b)))
+    print("{} + {} = {}".format(a, b, op.add(a, b)))
+    print("{} - {} = {}".format(a, b, op.sub(a, b)))
+    print("{} * {} = {}".format(a, b, op.mul(a, b)))
+    print("{} / {} = {}".format(a, b, op.div(a, b)))
