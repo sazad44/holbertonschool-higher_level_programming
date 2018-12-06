@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-import os
-os.system("echo 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'")
+__import__('os').system("echo '#pythoniscool'")
