@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-import os; os.system("echo 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'")
+import os
+os.system("echo 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'")
