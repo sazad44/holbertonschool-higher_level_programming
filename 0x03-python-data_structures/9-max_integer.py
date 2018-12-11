@@ -9,4 +9,4 @@ def max_integer(my_list=[]):
                 max = i
         return max
     except TypeError:
-        return
+        return None
