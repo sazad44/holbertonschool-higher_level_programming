@@ -31,14 +31,19 @@ listint_t *is_palindrome_check(listint_t *head, listint_t *tmp)
 	listint_t *ret;
 
 	if (tmp == NULL)
-		return (head->next);
+		return (head);
 	else
 	{
-		ret = is_palindrome_check(head, tmp + 1);
-		printf("%d %d\n", ret->n, tmp->n);
-		if (ret->n == tmp->n)
-			return (head->next);
-		else
+		ret = is_palindrome_check(head, tmp->next);
+		if (ret->n == tmp->n && ret->next)
+			return (ret->next);
+		else if (!ret)
+		{
 			return (NULL);
+		}
+		else
+		{
+			return (ret);
+		}
 	}
 }
