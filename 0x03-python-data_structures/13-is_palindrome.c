@@ -35,15 +35,14 @@ listint_t *is_palindrome_check(listint_t *head, listint_t *tmp)
 	else
 	{
 		ret = is_palindrome_check(head, tmp->next);
+		if (ret == NULL)
+			return (NULL);
 		if (ret->n == tmp->n && ret->next)
 			return (ret->next);
-		else if (!ret)
-		{
-			return (NULL);
-		}
-		else
-		{
+		else if (ret->n == head->n)
 			return (ret);
-		}
+		else
+			return (NULL);
 	}
+	return (NULL);
 }
