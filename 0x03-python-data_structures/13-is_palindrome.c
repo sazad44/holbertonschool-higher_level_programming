@@ -7,18 +7,38 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int llen, i, llen2, j;
-	listint_t *tmp, *tmp1;
+	listint_t *tmp;
 
-	for (llen = 0, tmp = *head; tmp; llen++, tmp = tmp->next)
-		;
-	llen2 = llen;
-	for (i = 0, tmp = *head; i < llen/2; i++, tmp = tmp->next, llen2--)
+	if (head == NULL)
+		return (0);
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
+	tmp = *head;
+	if (is_palindrome_check(*head, tmp))
+		return (1);
+	else
+		return (0);
+}
+
+/**
+ * is_palindrome_check - checks if a linked list is a palindrome
+ * @head: a pointer to the first element of a list
+ * @tmp: a pointer to be iterated
+ * Return: a null pointer if not a palindrome and not null if palindrome
+ */
+listint_t *is_palindrome_check(listint_t *head, listint_t *tmp)
+{
+	listint_t *ret;
+
+	if (tmp == NULL)
+		return (head->next);
+	else
 	{
-		for (tmp1 = *head, j = 0; j < llen2 - 1; j++, tmp1 = tmp1->next)
-			;
-		if (tmp1->n != tmp->n)
-			return (0);
+		ret = is_palindrome_check(head, tmp + 1);
+		printf("%d %d\n", ret->n, tmp->n);
+		if (ret->n == tmp->n)
+			return (head->next);
+		else
+			return (NULL);
 	}
-	return (1);
 }
