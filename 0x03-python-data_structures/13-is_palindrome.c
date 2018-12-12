@@ -7,41 +7,18 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int llen, i, llen2;
-	listint_t *tmp, *comp, *new, *compcpy;
+	int llen, i, llen2, j;
+	listint_t *tmp, *tmp1;
 
 	for (llen = 0, tmp = *head; tmp; llen++, tmp = tmp->next)
 		;
-	llen2 = ((llen / 2) - 1);
-	comp = NULL;
-	for (i = 0, tmp = *head; i <= llen2; i++, tmp = tmp->next)
+	llen2 = llen;
+	for (i = 0, tmp = *head; i < llen/2; i++, tmp = tmp->next, llen2--)
 	{
-		new = malloc(sizeof(listint_t));
-		if (new == NULL)
-			return (98);
-		new->n = tmp->n;
-		new->next = NULL;
-		if (comp == NULL)
-			comp = new;
-		else
-		{
-			new->next = comp;
-			comp = new;
-		}
-	}
-	if (llen % 2 != 0)
-		tmp = tmp->next;
-	compcpy = comp;
-	while (comp)
-	{
-		if (comp->n != tmp->n)
-		{
-			free_listint(compcpy);
+		for (tmp1 = *head, j = 0; j < llen2 - 1; j++, tmp1 = tmp1->next)
+			;
+		if (tmp1->n != tmp->n)
 			return (0);
-		}
-		comp = comp->next;
-		tmp = tmp->next;
 	}
-	free_listint(compcpy);
 	return (1);
 }
