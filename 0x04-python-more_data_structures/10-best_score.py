@@ -5,3 +5,4 @@ def best_score(a_dictionary):
         for k in a_dictionary.keys():
             if a_dictionary[k] == comp:
                 return k
+        return None
