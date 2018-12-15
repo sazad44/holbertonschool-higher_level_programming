@@ -1,8 +1,10 @@
-#include <stdio.h>
+#include <Python.h>
 #include <sys/types.h>
 #include <pyport.h>
 #include <object.h>
 #include <listobject.h>
+PyObject *ptype = NULL;
+int plsize = 0, i = 0;
 
 /**
  * print_python_list_info - prints info about python lists
@@ -11,16 +13,18 @@
  */
 void print_python_list_info(PyObject *p)
 {
-	int i, psize, plsize;
-	char *ptype;
+	int psize = (int)PyList_Size(p);
+	PyObject *tmptype = NULL;
 
-	plsize = (int)PyList_Size(p);
-	psize = (int)Py_SIZE(p);
-	printf("[*] Size of the Python List = %d\n", plsize);
-	printf("[*] Allocated = %d\n", psize);
-	for (i = 0; i <= plsize; i++)
+	if (psize)
+		tmptype = PyList_GetItem(p, 0);
+	if ((tmptype != ptype) || (psize > plsize))
+		plsize = psize;
+	printf("[*] Size of the Python List = %d\n", psize);
+	printf("[*] Allocated = %d\n", plsize);
+	for (i = 0; i < psize; i++)
 	{
-		ptype =  (char *)PyList_GetItem(p, i);
-		printf("Element %d: %s\n", i, ptype);
+		ptype = PyList_GetItem(p, i);
+		printf("Element %d: %s\n", i, (char *)Py_TYPE(ptype)->tp_name);
 	}
 }
