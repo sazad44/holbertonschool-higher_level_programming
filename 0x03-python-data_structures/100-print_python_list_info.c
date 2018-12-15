@@ -3,8 +3,6 @@
 #include <pyport.h>
 #include <object.h>
 #include <listobject.h>
-PyObject *ptype = NULL;
-int plsize = 0, i = 0;
 
 /**
  * print_python_list_info - prints info about python lists
@@ -13,15 +11,12 @@ int plsize = 0, i = 0;
  */
 void print_python_list_info(PyObject *p)
 {
-	int psize = (int)PyList_Size(p);
-	PyObject *tmptype = NULL;
+	int psize = (int)PyList_Size(p), i = 0;
+	int all = (int)(((PyListObject *)(p))->allocated);
+	PyObject *ptype = NULL;
 
-	if (psize)
-		tmptype = PyList_GetItem(p, 0);
-	if ((tmptype != ptype) || (psize > plsize))
-		plsize = psize;
 	printf("[*] Size of the Python List = %d\n", psize);
-	printf("[*] Allocated = %d\n", plsize);
+	printf("[*] Allocated = %d\n", all);
 	for (i = 0; i < psize; i++)
 	{
 		ptype = PyList_GetItem(p, i);
