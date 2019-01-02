@@ -8,7 +8,7 @@ def safe_print_list_integers(my_list=[], x=0):
                 j += 1
         print("")
         return j
-    except (IndexError, TypeError):
+    except TypeError:
         if isinstance(my_list, list):
             print("")
         return j
