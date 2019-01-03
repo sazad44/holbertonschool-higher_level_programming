@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 class Square:
+    """Square class for a text square.
+
+    Attributes:
+       __size: size of the square privately
+    """
     __size = 0
 
     def __init__(self, size):
