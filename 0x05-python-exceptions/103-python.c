@@ -3,6 +3,7 @@
 #include <pyport.h>
 #include <object.h>
 #include <listobject.h>
+#include <bytesobject.h>
 #include <string.h>
 void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
@@ -61,7 +62,7 @@ void print_python_bytes(PyObject *p)
 		PyBytes_AsStringAndSize(p, &pstr, &plen);
 		psize = (int)PyBytes_Size(p);
 		printf("  size: %d\n", psize);
-		printf("  trying string: %s\n", pstr);
+		printf("  trying string: %s\n", (PyBytesObject *)(p)->ob_sval);
 		if (psize < 10)
 			printf("  first %d bytes: ", (psize + 1));
 		else
