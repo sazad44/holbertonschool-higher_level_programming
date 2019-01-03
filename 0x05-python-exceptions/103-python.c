@@ -49,8 +49,6 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	char *pstr;
-	Py_ssize_t plen;
 	unsigned int psize, i;
 	char *ptype = NULL;
 
@@ -59,16 +57,15 @@ void print_python_bytes(PyObject *p)
 	printf("[.] bytes object info\n");
 	if (!strcmp("bytes", ptype))
 	{
-		PyBytes_AsStringAndSize(p, &pstr, &plen);
 		psize = (int)PyBytes_Size(p);
 		printf("  size: %d\n", psize);
-		printf("  trying string: %s\n", (PyBytesObject *)(p)->ob_sval);
+		printf("  trying string: %s\n", ((PyBytesObject *)(p))->ob_sval);
 		if (psize < 10)
 			printf("  first %d bytes: ", (psize + 1));
 		else
 			printf("  first 10 bytes: ");
 		for (i = 0; i < psize + 1 && i < 10; i++)
-			printf("%02x ", (unsigned char)pstr[i]);
+			printf("%02x ",  (unsigned char)(((PyBytesObject *)(p))->ob_sval[i]));
 		printf("\n");
 	}
 	else
