@@ -8,6 +8,11 @@ void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
 
+/**
+ * print_python_list - prints size and allocation of list
+ * @p: PyObject struct pointer
+ * Return: No Value
+ */
 void print_python_list(PyObject *p)
 {
 	unsigned int psize = (unsigned int)(((PyVarObject *)(p))->ob_size), i;
@@ -36,6 +41,11 @@ void print_python_list(PyObject *p)
 		printf("  [ERROR] Invalid List Object\n");
 }
 
+/**
+ * print_python_bytes - prints size of bytes, string, and first few bytes
+ * @p: PyObject struct pointer
+ * Return: No Value
+ */
 void print_python_bytes(PyObject *p)
 {
 	char *pstr;
@@ -64,6 +74,11 @@ void print_python_bytes(PyObject *p)
 		printf("  [ERROR] Invalid Bytes Object\n");
 }
 
+/**
+ * print_python_float - prints value of float
+ * @p: PyObject struct pointer
+ * Return: No Value
+ */
 void print_python_float(PyObject *p)
 {
 	char *pftype = (char *)((PyListObject *)(p)->ob_type->tp_name);
