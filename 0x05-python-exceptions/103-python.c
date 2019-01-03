@@ -94,9 +94,9 @@ void print_python_float(PyObject *p)
 	{
 		pdub = PyFloat_AsDouble(p);
 		if (fmod((pdub * 10), 10) != 0)
-			printf("  value: %2.16g\n", pdub);
+			printf("  value: %.16g\n", pdub);
 		else
-			printf("  value: %2.1f\n", pdub);
+			printf("  value: %#.2g\n", pdub);
 	}
 	else
 		printf("  [ERROR] Invalid Float Object\n");
