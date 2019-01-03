@@ -5,6 +5,8 @@
 #include <listobject.h>
 #include <bytesobject.h>
 #include <string.h>
+#include <math.h>
+#include <stdio.h>
 void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
@@ -24,7 +26,7 @@ void print_python_list(PyObject *p)
 
 	setbuf(stdout, NULL);
 	printf("[*] Python list info\n");
-	if (!strcmp("list", pltype))
+	if (p && !strcmp("list", pltype))
 	{
 		printf("[*] Size of the Python List = %u\n", psize);
 		printf("[*] Allocated = %u\n", pall);
@@ -55,7 +57,7 @@ void print_python_bytes(PyObject *p)
 	setbuf(stdout, NULL);
 	ptype = (char *)(p->ob_type->tp_name);
 	printf("[.] bytes object info\n");
-	if (!strcmp("bytes", ptype))
+	if (p && !strcmp("bytes", ptype))
 	{
 		psize = (int)PyBytes_Size(p);
 		printf("  size: %d\n", psize);
@@ -65,7 +67,11 @@ void print_python_bytes(PyObject *p)
 		else
 			printf("  first 10 bytes: ");
 		for (i = 0; i < psize + 1 && i < 10; i++)
-			printf("%02x ",  (unsigned char)(((PyBytesObject *)(p))->ob_sval[i]));
+		{
+			printf("%02x",  (unsigned char)(((PyBytesObject *)(p))->ob_sval[i]));
+			if ((i != psize) && (i < 9))
+				printf(" ");
+		}
 		printf("\n");
 	}
 	else
@@ -80,22 +86,17 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
 	char *pftype = (char *)((PyListObject *)(p)->ob_type->tp_name);
-	char floatarr[100];
-	unsigned int i;
+	double pdub = 0.0;
 
 	setbuf(stdout, NULL);
 	printf("[.] float object info\n");
-	if (!strcmp("float", pftype))
+	if (p && !strcmp("float", pftype))
 	{
-		sprintf(floatarr, "%3.15f", PyFloat_AsDouble(p));
-		for (i = 0; floatarr[i]; i++)
-		{
-			if (floatarr[i] == '0' && ((i > 2) && floatarr[0] != '-'))
-				floatarr[i] = '\0';
-			if (floatarr[i] == '0' && (i > 3))
-				floatarr[i] = '\0';
-		}
-		printf("  value: %s\n", floatarr);
+		pdub = PyFloat_AsDouble(p);
+		if (fmod((pdub * 10), 10) != 0)
+			printf("  value: %2.16g\n", pdub);
+		else
+			printf("  value: %2.1f\n", pdub);
 	}
 	else
 		printf("  [ERROR] Invalid Float Object\n");
