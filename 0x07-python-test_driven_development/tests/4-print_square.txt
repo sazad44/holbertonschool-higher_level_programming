@@ -1,17 +1,19 @@
 # 4-print_square.txt
 
-Using ``4-print_square`` Module
+The ``4-print_square`` module
 ===============================
 
-The ``print_square`` function
------------------------------
+Using ``print_square``
+----------------------
+
 
 This tests the module ``4-print_square`` by importing
-the ``print_square`` function.
+the ``print_square`` function. First importing module then using
+specified function.
 
     >>> print_square = __import__('4-print_square').print_square
 
-Now Test:
+Now test:
 
     >>> print_square(None)
     Traceback (most recent call last):

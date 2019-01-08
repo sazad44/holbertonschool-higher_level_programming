@@ -5,6 +5,7 @@ This module prints a square according to the input specificiations.
 It prints out a square or error depending on the input.
 """
 
+
 def print_square(size):
     """print_square function prints square according to size parameter
     Returns nothing
