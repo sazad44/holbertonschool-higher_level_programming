@@ -1,0 +1,54 @@
+# 4-print_square.txt
+
+Using ``4-print_square`` Module
+===============================
+
+The ``print_square`` function
+-----------------------------
+
+This tests the module ``4-print_square`` by importing
+the ``print_square`` function.
+
+    >>> print_square = __import__('4-print_square').print_square
+
+Now Test:
+
+    >>> print_square(None)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    >>> print_square(1.0)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    >>> print_square("silly square")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    >>> print_square(-5)
+    Traceback (most recent call last):
+    TypeError: size must be >= 0
+
+    >>> print_square(0)
+    <BLANKLINE>
+
+    >>> print_square(1)
+    #
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
