@@ -11,14 +11,21 @@ def matrix_divided(matrix, div):
     Return: matrix of results of each of original matrix's elements divided
     """
     try:
-        return [[round(j/div, 2) for j in matrix[i]] for i in matrix]
-    except TypeError:
-        if not isinstance
-        if not isinstance(matrix[i][j], int):
+        if not isinstance(matrix, list):
             message = 'matrix must be a matrix (list of lists) of\
             integers/floats'
+            print("BOOP BOOP")
             raise TypeError(message)
-        elif not isinstance(matrix[i][j], float):
-            message = 'matrix must be a matrix (list of lists) of\
-            integers/floats'
-            raise TypeError(message)
+        elif not isinstance(div, int) and not isinstance(div, float):
+            raise TypeError('div must be a number')
+        elif div == 0:
+            raise ZeroDivisionError('division by zero')
+        for i in matrix:
+            if len(i) != len(matrix[0]):
+                raise TypeError('Each row of the matrix must have the same size')
+        return [[round(float(j) / div, 2) for j in matrix[i]] for i in range(len(matrix))]
+    except TypeError, ValueError:
+        if len(i) != len(matrix[0]):
+                raise TypeError('Each row of the matrix must have the same size')
+        message = 'matrix must be a matrix (list of lists) of integers/floats'
+        raise TypeError(message)
