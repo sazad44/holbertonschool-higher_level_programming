@@ -79,3 +79,11 @@ Now test:
     >>> text_indentation(message) # doctest: +NORMALIZE_WHITESPACE
     <BLANKLINE>
     Hello
+
+    >>> message = "\n"
+    >>> text_indentation(message) # doctest: +NORMALIZE_WHITESPACE
+    <BLANKLINE>
+
+    >>> text_indentation() # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
