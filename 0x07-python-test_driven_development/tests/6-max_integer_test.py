@@ -56,7 +56,7 @@ class TestMaxInteger(unittest.TestCase):
         """test_ex1 method
         tests function with first example
         """
-        self.assertEqual(max_integer([5, 2, 3, 4]), 4)
+        self.assertEqual(max_integer([5, 2, 3, 4]), 5)
 
     def test_ex2(self):
         """test_ex2 method
