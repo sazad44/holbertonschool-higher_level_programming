@@ -81,7 +81,7 @@ Now test:
     Hello
 
     >>> text_indentation("Holberton.\nSchool") # doctest: +NORMALIZE_WHITESPACE
-    Holberton
+    Holberton.
     <BLANKLINE>
     <BLANKLINE>
     School
