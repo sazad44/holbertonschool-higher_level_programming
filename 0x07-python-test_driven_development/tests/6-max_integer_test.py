@@ -58,7 +58,7 @@ class TestMaxInteger(unittest.TestCase):
         """
         self.assertEqual(max_integer([5, 2, 3, 4]), 5)
 
-    def test_ex2(self):
+    def test_one_neg(self):
         """test_ex2 method
         tests function with first example
         """
@@ -69,3 +69,9 @@ class TestMaxInteger(unittest.TestCase):
         tests function with first example
         """
         self.assertEqual(max_integer([1, -3, 4, 6]), 6)
+
+    def test_1neg(self):
+        """test_ex2 method
+        tests function with first example
+        """
+        self.assertEqual(max_integer([-3]), -3)
