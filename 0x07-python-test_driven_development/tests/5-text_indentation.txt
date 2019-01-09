@@ -80,8 +80,9 @@ Now test:
     <BLANKLINE>
     Hello
 
-    >>> message = "\n"
+    >>> message = "Holberton   \n"
     >>> text_indentation(message) # doctest: +NORMALIZE_WHITESPACE
+    Holberton
     <BLANKLINE>
 
     >>> text_indentation() # doctest: +ELLIPSIS
