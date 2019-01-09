@@ -11,6 +11,8 @@ def matrix_divided(matrix, div):
     Return: matrix of results of each of original matrix's elements divided
     """
     try:
+        res_l = []
+        res = []
         if not isinstance(matrix, list):
             message = 'matrix must be a matrix (list of lists)\
  of integers/floats'
@@ -27,12 +29,14 @@ def matrix_divided(matrix, div):
                 raise TypeError('Each row of the matrix must have the same\
  size')
         for i in range(len(matrix)):
+            res.append([])
             for j in matrix[i]:
                 if isinstance(j, int) or isinstance(j, float):
-                    round(float(j) / div, 2)
+                    res[i].append(round(float(j) / div, 2))
                 else:
                     raise TypeError("""matrix must be a matrix (list of lists) \
 of integers/floats""")
+        return res
     except ValueError:
         if len(i) != len(matrix[0]):
                 raise TypeError('Each row of the matrix must have the same\
