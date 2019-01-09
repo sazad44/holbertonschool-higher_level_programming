@@ -15,6 +15,10 @@ specified function.
 
 Now test:
 
+    >>> print_square() # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
+
     >>> print_square(None)
     Traceback (most recent call last):
     TypeError: size must be an integer
