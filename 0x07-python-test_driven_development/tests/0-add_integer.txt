@@ -22,6 +22,9 @@ Now test:
     >>> add_integer(2)
     100
 
+    >>> add_integer(2.0)
+    100
+
     >>> add_integer(100.3, -2)
     98
 
@@ -40,3 +43,16 @@ Now test:
     >>> add_integer(5, 5, 5) #doctest: +ELLIPSIS
     Traceback (most recent call last):
     TypeError:...
+
+    >>> add_integer(-5)
+    93
+
+    >>> add_integer([1, 2, 3])
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+    >>> add_integer(2.9, 0.2)
+    3
+
+    >>> add_integer(3.4, 5.7)
+    9

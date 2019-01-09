@@ -11,11 +11,8 @@ def add_integer(a, b=98):
     Return: Result of a and b addition
     """
     try:
-        if isinstance(a, float):
-            a = int(round(a))
-        if isinstance(b, float):
-            b = int(round(a))
-        return a + b
+        sum = a + b
+        return int(round(a)) + int(round(b))
     except TypeError:
         if isinstance(a, int):
             raise TypeError('b must be an integer')
