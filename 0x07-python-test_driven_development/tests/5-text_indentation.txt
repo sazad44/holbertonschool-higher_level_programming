@@ -71,3 +71,11 @@ Now test:
     Faster than:
     <BLANKLINE>
     Hansel and Gretel
+
+    >>> message = "      "
+    >>> text_indentation(message) # doctest: +NORMALIZE_WHITESPACE
+
+    >>> message = "\n Hello"
+    >>> text_indentation(message) # doctest: +NORMALIZE_WHITESPACE
+    <BLANKLINE>
+    Hello
