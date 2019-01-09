@@ -1,0 +1,19 @@
+# 0-rectangle.txt
+
+The ``0-rectangle`` module
+==========================
+
+Using ``Rectangle`` class
+-------------------------
+
+Testing class with multiple test cases.
+
+	>>> Rectangle = __import__('0-rectangle').Rectangle
+
+Now test:
+
+    >>> my_rectangle = Rectangle()
+    >>> print(type(my_rectangle))
+    <class '0-rectangle.Rectangle'>
+    >>> print(my_rectangle.__dict__)
+    {}
