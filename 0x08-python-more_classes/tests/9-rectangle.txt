@@ -1,0 +1,170 @@
+# 9-rectangle.txt
+
+The ``9-rectangle`` module
+==========================
+
+Using ``Rectangle`` class
+-------------------------
+
+Testing class with multiple test cases.
+
+	>>> Rectangle = __import__('9-rectangle').Rectangle
+
+Now test:
+
+    >>> my_rectangle = Rectangle()
+    >>> print(type(my_rectangle)) # doctest: +ELLIPSIS
+    <class '...rectangle.Rectangle'>
+    >>> print(my_rectangle.__dict__) # doctest: +ELLIPSIS
+    {...'_Rectangle__height': 0...}
+
+    >>> my_rectangle = Rectangle() # doctest: +ELLIPSIS
+    Bye...
+    >>> print(my_rectangle.__dict__) # doctest: +ELLIPSIS
+    {...'_Rectangle__height': 0...}
+
+    >>> my_rectangle = Rectangle(2, 4) # doctest: +ELLIPSIS
+    Bye...
+    >>> print(my_rectangle.__dict__) # doctest: +ELLIPSIS
+    {...'_Rectangle__height': 4...}
+
+    >>> my_rectangle.width = 10
+    >>> my_rectangle.height = 3
+    >>> print(my_rectangle.__dict__) # doctest: +ELLIPSIS
+    {...'_Rectangle__height': 3...}
+
+    >>> my_rectangle.width = "9"
+    Traceback (most recent call last):
+    TypeError: width must be an integer
+
+    >>> my_rectangle.width = -5
+    Traceback (most recent call last):
+    ValueError: width must be >= 0
+
+    >>> my_rectangle.height = "9"
+    Traceback (most recent call last):
+    TypeError: height must be an integer
+
+    >>> my_rectangle.height = -5
+    Traceback (most recent call last):
+    ValueError: height must be >= 0
+
+    >>> my_rectangle = Rectangle(2, 4) # doctest: +ELLIPSIS
+    Bye...
+    >>> print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
+    Area: 8 - Perimeter: 12
+
+    >>> my_rectangle.width = 10
+    >>> my_rectangle.height = 3
+    >>> print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
+    Area: 30 - Perimeter: 26
+
+    >>> my_rectangle = Rectangle() # doctest: +ELLIPSIS
+    Bye...
+    >>> my_rectangle.perimeter()
+    0
+
+    >>> my_rectangle = Rectangle(height=1) # doctest: +ELLIPSIS
+    Bye...
+    >>> my_rectangle.perimeter()
+    0
+
+    >>> my_rectangle = Rectangle(width=1) # doctest: +ELLIPSIS
+    Bye...
+    >>> my_rectangle.perimeter()
+    0
+
+    >>> my_rectangle = Rectangle(2, 4) # doctest: +ELLIPSIS
+    Bye...
+    >>> print(str(my_rectangle))
+    ##
+    ##
+    ##
+    ##
+
+    >>> my_rectangle.width = 10
+    >>> my_rectangle.height = 3
+    >>> print(my_rectangle)
+    ##########
+    ##########
+    ##########
+
+    >>> my_rectangle = Rectangle() # doctest: +ELLIPSIS
+    Bye...
+    >>> print(str(my_rectangle))
+    <BLANKLINE>
+
+    >>> my_rectangle = Rectangle(height=1) # doctest: +ELLIPSIS
+    Bye...
+    >>> print(str(my_rectangle))
+    <BLANKLINE>
+
+    >>> my_rectangle = Rectangle(width=1) # doctest: +ELLIPSIS
+    Bye...
+    >>> print(str(my_rectangle))
+    <BLANKLINE>
+
+    >>> my_rectangle = Rectangle(2, 4) # doctest: +ELLIPSIS
+    Bye...
+    >>> print(my_rectangle)
+    ##
+    ##
+    ##
+    ##
+
+    >>> print(repr(my_rectangle))
+    Rectangle(2, 4)
+
+    >>> new_rectangle = eval(repr(my_rectangle))
+    >>> hex(id(my_rectangle)) != hex(id(new_rectangle))
+    True
+
+    >>> del new_rectangle
+    Bye rectangle...
+
+    >>> Rectangle.number_of_instances
+    1
+    >>> del my_rectangle
+    Bye rectangle...
+    >>> Rectangle.number_of_instances
+    0
+
+    >>> my_rectangle_1 = Rectangle(8, 4)
+    >>> print(my_rectangle_1)
+    ########
+    ########
+    ########
+    ########
+    >>> my_rectangle_1.print_symbol = "&"
+    >>> print(my_rectangle_1)
+    &&&&&&&&
+    &&&&&&&&
+    &&&&&&&&
+    &&&&&&&&
+
+    >>> my_rectangle_2 = Rectangle(2, 3)
+    >>> Rectangle.bigger_or_equal(my_rectangle_1, my_rectangle_2) is my_rectangle_1
+    True
+
+    >>> Rectangle.bigger_or_equal("my_rectangle_1", my_rectangle_2)
+    Traceback (most recent call last):
+    TypeError: rect_1 must be an instance of Rectangle
+
+    >>> Rectangle.bigger_or_equal(my_rectangle_1, "my_rectangle_2")
+    Traceback (most recent call last):
+    TypeError: rect_2 must be an instance of Rectangle
+
+    >>> my_rectangle_2.width = 4
+    >>> my_rectangle_2.height = 8
+    >>> Rectangle.bigger_or_equal(my_rectangle_1, my_rectangle_2) is my_rectangle_1
+    True
+
+    >>> my_square = Rectangle.square(5)
+    >>> print("Area: {} - Perimeter: {}".format(my_square.area(), my_square.perimeter()))
+    Area: 25 - Perimeter: 20
+    >>> print(my_square)
+    #####
+    #####
+    #####
+    #####
+    #####
