@@ -27,6 +27,7 @@ class Rectangle():
                 return rect_1
             else:
                 return rect_2
+
     def __init__(self, width=0, height=0):
         """Instantiation Method"""
         self.width = width
