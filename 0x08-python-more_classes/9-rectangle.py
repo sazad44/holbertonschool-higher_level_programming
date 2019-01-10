@@ -34,13 +34,16 @@ class Rectangle():
                 return rect_2
 
     @staticmethod
-    def square(size):
+    def square(size=0):
         """square staticmethod
 
         instantiates class Rectangle with one size for both width and height
         returns new instance
         """
-        return Rectangle(size, size)
+        if not isinstance(size, int):
+            raise TypeError('size must be an integer')
+        else:
+            return Rectangle(size, size)
 
     def __init__(self, width=0, height=0):
         """Instantiation Method"""
