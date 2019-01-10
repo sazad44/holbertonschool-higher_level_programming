@@ -171,4 +171,4 @@ Now test:
 
     >>> my_square = Rectangle.square("big")
     Traceback (most recent call last):
-    TypeError: size must be an integer
+    TypeError: width must be an integer

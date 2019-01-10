@@ -40,10 +40,7 @@ class Rectangle():
         instantiates class Rectangle with one size for both width and height
         returns new instance
         """
-        if not isinstance(size, int):
-            raise TypeError('size must be an integer')
-        else:
-            return Rectangle(size, size)
+        return Rectangle(size, size)
 
     def __init__(self, width=0, height=0):
         """Instantiation Method"""
