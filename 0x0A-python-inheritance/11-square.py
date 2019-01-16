@@ -27,3 +27,25 @@ class Rectangle(BaseGeometry):
         super().integer_validator("height", height)
         self.__width = width
         self.__height = height
+
+    def area(self):
+        """area method calculates and returns area of rectangle"""
+        return self.__width * self.__height
+
+    def __str__(self):
+        """str magic method"""
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
+
+
+class Square(Rectangle):
+    """Square Class"""
+
+    def __init__(self, size):
+        """__init__ magic method"""
+        super().__init__(size, size)
+        self.__width = size
+        self.__height = size
+
+    def __str__(self):
+        """__str__ magic method"""
+        return "[Square] {}/{}".format(self.__width, self.__height)

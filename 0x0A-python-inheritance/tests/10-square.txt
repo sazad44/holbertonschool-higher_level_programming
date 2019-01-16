@@ -1,0 +1,28 @@
+# 10-square.txt
+
+The ``10-square`` module
+================================
+
+Using ``Square``
+----------------------
+
+Importing module and then testing class through interactive sessions.
+
+    >>> Square = __import__('10-square').Square
+
+Now test:
+
+    >>> my_square = Square(13)
+
+    >>> print(my_square)
+    [Rectangle] 13/13
+    >>> print(my_square.area())
+    169
+
+    >>> my_square = Square('a')
+    Traceback (most recent call last):
+    TypeError: width must be an integer
+
+    >>> my_square = Square() # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
