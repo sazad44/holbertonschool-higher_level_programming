@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """100-my_int module"""
+
+
 class MyInt(int):
     """MyInt Class"""
     def __eq__(self, other):
