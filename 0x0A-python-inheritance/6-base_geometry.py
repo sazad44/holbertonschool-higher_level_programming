@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""5-base_geometry module"""
+"""6-base_geometry module"""
 
 
 class BaseGeometry(object):
-    """BaseGeometry Class Empty"""
+    """BaseGeometry Class"""
 
     def area(self):
         """area method raises exception"""

@@ -94,7 +94,7 @@ void print_python_float(PyObject *p)
 	{
 		pdub = PyFloat_AsDouble(p);
 		if (trunc(fmod((pdub * 10), 10)) != 0 || trunc(fmod((pdub / 10), 10)) != 0)
-			printf("  value: %.16g\n", pdub);
+			printf("  value: %.17g\n", pdub);
 		else
 			printf("  value: %#.2g\n", pdub);
 	}

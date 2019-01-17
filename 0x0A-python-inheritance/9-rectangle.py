@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""base_geometry module"""
+"""9-rectangle module"""
 
 
 class BaseGeometry(object):

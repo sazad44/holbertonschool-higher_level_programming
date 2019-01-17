@@ -13,6 +13,10 @@ interactive tests.
 
 Now test:
 
+    >>> my_list = MyList(5) # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
+
     >>> my_list = MyList()
 
     >>> my_list.print_sorted()
