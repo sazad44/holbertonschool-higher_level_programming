@@ -10,6 +10,10 @@ items = []
 if len(sys.argv) == 1:
     save_to_json_file(items, "add_item.json")
 else:
-    items = load_from_json_file("add_item.json")
-    items.extend([sys.argv[i] for i in range(1, len(sys.argv))])
-    save_to_json_file(items, "add_item.json")
+    try:
+        items = load_from_json_file("add_item.json")
+    except FileNotFoundError:
+        pass
+    finally:
+        items.extend([sys.argv[i] for i in range(1, len(sys.argv))])
+        save_to_json_file(items, "add_item.json")
