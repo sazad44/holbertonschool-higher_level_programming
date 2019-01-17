@@ -21,7 +21,7 @@ Now test:
 
     >>> my_square = Square('a')
     Traceback (most recent call last):
-    TypeError: width must be an integer
+    TypeError: size must be an integer
 
     >>> my_square = Square() # doctest: +ELLIPSIS
     Traceback (most recent call last):
