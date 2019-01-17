@@ -43,9 +43,8 @@ class Square(Rectangle):
     def __init__(self, size):
         """__init__ magic method"""
         super().__init__(size, size)
-        self.__width = size
-        self.__height = size
+        self.__size = size
 
     def __str__(self):
         """__str__ magic method"""
-        return "[Square] {}/{}".format(self.__width, self.__height)
+        return "[Square] {}/{}".format(self.__size, self.__size)

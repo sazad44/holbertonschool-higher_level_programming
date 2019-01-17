@@ -43,3 +43,4 @@ class Square(Rectangle):
     def __init__(self, size):
         """__init__ magic method"""
         super().__init__(size, size)
+        self.__size = size

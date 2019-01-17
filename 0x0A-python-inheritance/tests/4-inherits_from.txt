@@ -1,0 +1,25 @@
+# 4-inherits_from.txt
+
+The ``4-inherits_from`` module
+================================
+
+Using ``inherits_from``
+-------------------------
+
+Testing module by importing function and performing
+interactive tests on it as follows:
+
+    >>> inherits_from = __import__('4-inherits_from').inherits_from
+
+Now test:
+
+    >>> a = True
+
+    >>> inherits_from(a, int)
+    True
+
+    >>> inherits_from(a, bool)
+    False
+
+    >>> inherits_from(a, object)
+    True

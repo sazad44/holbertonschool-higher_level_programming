@@ -1,0 +1,25 @@
+# 3-is_kind_of_class.txt
+
+The ``3-is_kind_of_class`` module
+================================
+
+Using ``3-is_kind_of_class``
+-------------------------
+
+Testing module by importing function and performing
+interactive tests on it as follows:
+
+    >>> is_kind_of_class = __import__('3-is_kind_of_class').is_kind_of_class
+
+Now test:
+
+    >>> a = 1
+
+    >>> is_kind_of_class(a, int)
+    True
+
+    >>> is_kind_of_class(a, float)
+    False
+
+    >>> is_kind_of_class(a, object)
+    True
