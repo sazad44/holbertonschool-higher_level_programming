@@ -12,3 +12,7 @@ class Square(Rectangle):
         """__init__ magic method"""
         super().integer_validator("size", size)
         self.__size = size
+
+    def area(self):
+        """area method"""
+        return self.__size ** 2
