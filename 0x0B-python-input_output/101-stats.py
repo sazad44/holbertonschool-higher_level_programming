@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""101-stats module"""
+
 
 import sys
 
