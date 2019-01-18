@@ -29,4 +29,5 @@ class Student:
 
     def reload_from_json(self, json):
         """reload_from_json"""
-        self.__dict__ = json
+        if '__dict__' in dir(self):
+            self.__dict__ = json
