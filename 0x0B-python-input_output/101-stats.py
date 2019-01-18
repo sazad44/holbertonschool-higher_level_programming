@@ -6,14 +6,14 @@ Printing info about standard input lines
 """
 
 if __name__ == "__main__":
-    import sys
+    from sys import stdin
 
     try:
         buf_line = ""
         i = 1
-        fs_sum = s_200 = s_401 = s_403 = s_404 = s_405 = s_500 = 0
-        while (True):
-            if (i % 10 == 0 and i != 0):
+        fs_sum = s_200 = s_401 = s_403 = s_404 = s_405 = s_500 = stat_sum = 0
+        for buf_line in stdin:
+            if (stat_sum % 10 == 0 and stat_sum != 0):
                 if fs_sum != 0:
                     print("File size: {:d}".format(fs_sum))
                 if s_200 != 0:
@@ -28,7 +28,6 @@ if __name__ == "__main__":
                     print("405: {:d}".format(s_405))
                 if s_500 != 0:
                     print("500: {:d}".format(s_500))
-            buf_line = sys.stdin.readline()
             split_buf = buf_line.split()
             fs_sum += int(split_buf[-1])
             s_code = split_buf[-2]
@@ -45,6 +44,7 @@ if __name__ == "__main__":
             elif s_code == "500":
                 s_500 += 1
             i += 1
+            stat_sum = s_200 + s_401 + s_403 + s_404 + s_405 + s_500
     except KeyboardInterrupt as k:
         print("File size: {:d}".format(fs_sum))
         print("200: {:d}".format(s_200))
