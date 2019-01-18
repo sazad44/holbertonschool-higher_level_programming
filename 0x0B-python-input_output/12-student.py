@@ -20,7 +20,6 @@ class Student:
     def to_json(self, attrs=None):
         """to_json method"""
         retd = self.__dict__
-        print(self.age.__dict__)
         if type(attrs) == list:
             if not all(type(x) == str for x in attrs):
                 return retd
