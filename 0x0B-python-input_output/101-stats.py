@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-"""101-stats module"""
+"""
+101-stats module
+
+Printing info about standard input lines
+"""
 
 
 import sys
 
 try:
+    buf_line = ""
     i = 1
     fs_sum = s_200 = s_401 = s_403 = s_404 = s_405 = s_500 = 0
-    while (True):
+    while (buf_line):
         if (i % 10 == 0 and i != 0):
             if fs_sum != 0:
                 print("File size: {:d}".format(fs_sum))
