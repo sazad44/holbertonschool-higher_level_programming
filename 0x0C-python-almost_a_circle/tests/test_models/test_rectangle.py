@@ -129,3 +129,32 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = CO
         print(r1)
         self.assertEqual(CO.getvalue(), "[Rectangle] (89) 4/5 - 2/3\n")
+
+    def test_update_1(self):
+        """test_update_1 method"""
+        r1 = Rectangle(10, 10, 10, 10, 1)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (1) 10/10 - 10/10\n")
+        r1.update(height=1)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (1) 10/10 - 10/1\n")
+        r1.update(width=1, x=2)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (1) 2/10 - 1/1\n")
+        r1.update(y=1, width=2, x=3, id=89)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (89) 3/1 - 2/1\n")
+        r1.update(x=1, height=2, y=3, width=4)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (89) 1/3 - 4/2\n")
+        sys.stdout = sys.__stdout__

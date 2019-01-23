@@ -93,11 +93,18 @@ class Rectangle(Base):
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".\
         format(self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """update method"""
-        attrl = ["id", "width", "height", "x", "y"]
-        for i in range(len(args)):
-            if i > 0:
-                self.__dict__["_Rectangle__" + attrl[i]] = args[i]
-            else:
-                self.__dict__[attrl[i]] = args[i]
+        if len(args) > 0:
+            attrl = ["id", "width", "height", "x", "y"]
+            for i in range(len(args)):
+                if i > 0:
+                    self.__dict__["_Rectangle__" + attrl[i]] = args[i]
+                else:
+                    self.__dict__[attrl[i]] = args[i]
+        else:
+            for key in kwargs:
+                if key != "id":
+                    self.__dict__["_Rectangle__" + key] = kwargs[key]
+                else:
+                    self.__dict__[key] = kwargs[key]
