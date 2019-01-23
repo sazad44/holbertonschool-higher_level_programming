@@ -67,3 +67,65 @@ class TestRectangle(unittest.TestCase):
         r1.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(CO.getvalue(), "##\n##\n")
+
+    def test_dunder_str(self):
+        """test_dunder_str"""
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (12) 2/1 - 4/6\n")
+        sys.stdout = sys.__stdout__
+        r2 = Rectangle(5, 5, 1, id = 1)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r2)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (1) 1/0 - 5/5\n")
+        sys.stdout = sys.__stdout__
+
+    def test_display_1(self):
+        """test_display_1 method"""
+        r1 = Rectangle(2, 3, 2, 2)
+        CO = io.StringIO()
+        sys.stdout = CO
+        r1.display()
+        self.assertEqual(CO.getvalue(), "\n\n  ##\n  ##\n  ##\n")
+        CO = io.StringIO()
+        sys.stdout = CO
+        r2 = Rectangle(3, 2, 1, 0)
+        r2.display()
+        self.assertEqual(CO.getvalue(), " ###\n ###\n")
+        sys.stdout = sys.__stdout__
+
+    def test_update(self, *args):
+        """test_update test method"""
+        r1 = Rectangle(10, 10, 10, 10, 1)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (1) 10/10 - 10/10\n")
+        r1.update(89)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (89) 10/10 - 10/10\n")
+        r1.update(89, 2)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (89) 10/10 - 2/10\n")
+        r1.update(89, 2, 3)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (89) 10/10 - 2/3\n")
+        r1.update(89, 2, 3, 4)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (89) 4/10 - 2/3\n")
+        r1.update(89, 2, 3, 4, 5)
+        CO = io.StringIO()
+        sys.stdout = CO
+        print(r1)
+        self.assertEqual(CO.getvalue(), "[Rectangle] (89) 4/5 - 2/3\n")

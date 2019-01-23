@@ -79,7 +79,25 @@ class Rectangle(Base):
 
     def display(self):
         """display method"""
+        for i in range(self.y):
+            print()
         for i in range(self.height):
+            for j in range(self.x):
+                print(" ", end="")
             for j in range(self.width):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """string magic method"""
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".\
+        format(self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args):
+        """update method"""
+        attrl = ["id", "width", "height", "x", "y"]
+        for i in range(len(args)):
+            if i > 0:
+                self.__dict__["_Rectangle__" + attrl[i]] = args[i]
+            else:
+                self.__dict__[attrl[i]] = args[i]
