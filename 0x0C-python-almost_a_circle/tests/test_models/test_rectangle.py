@@ -131,6 +131,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(CO.getvalue(), "[Rectangle] (89) 4/5 - 2/3\n")
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             r1.update(1, "with")
+
     def test_update_1(self):
         """test_update_1 method"""
         r1 = Rectangle(10, 10, 10, 10, 1)

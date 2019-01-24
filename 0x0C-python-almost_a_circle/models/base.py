@@ -28,7 +28,25 @@ class Base:
             with open(cls.__name__ + ".json", "w+") as f:
                 f.write("[]")
         with open(cls.__name__ + ".json", "w+") as f:
-            f.write(Base.to_json_string([x.to_dictionary() for x in list_objs]))
+            f.write(Base.to_json_string([x.to_dictionary()
+                                         for x in list_objs]))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """create class method"""
+        retcls = cls(1, 1, 1)
+        retcls.update(**dictionary)
+        return retcls
+
+    @classmethod
+    def load_from_file(cls):
+        """load_from_file method"""
+        try:
+            with open(cls.__name__ + ".json", "r") as f:
+                objl = Base.from_json_string(f.read())
+            return [cls.create(**o) for o in objl]
+        except:
+            return []
 
     def __init__(self, id=None):
         """init magic method"""
