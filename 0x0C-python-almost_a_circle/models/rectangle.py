@@ -91,20 +91,38 @@ class Rectangle(Base):
     def __str__(self):
         """string magic method"""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".\
-        format(self.id, self.x, self.y, self.width, self.height)
+            format(self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
         """update method"""
         if len(args) > 0:
-            attrl = ["id", "width", "height", "x", "y"]
-            for i in range(len(args)):
-                if i > 0:
-                    self.__dict__["_Rectangle__" + attrl[i]] = args[i]
-                else:
-                    self.__dict__[attrl[i]] = args[i]
+            self.id = args[0]
+            if len(args) > 1:
+                self.width = args[1]
+            if len(args) > 2:
+                self.height = args[2]
+            if len(args) > 3:
+                self.x = args[3]
+            if len(args) > 4:
+                self.y = args[4]
         else:
-            for key in kwargs:
-                if key != "id":
-                    self.__dict__["_Rectangle__" + key] = kwargs[key]
-                else:
-                    self.__dict__[key] = kwargs[key]
+            if "id" in kwargs:
+                self.id = kwargs["id"]
+            if "width" in kwargs:
+                self.width = kwargs["width"]
+            if "height" in kwargs:
+                self.height = kwargs["height"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
+
+    def to_dictionary(self):
+        """to_dictionary method"""
+        rdict = {}
+        rdict["id"] = self.id
+        rdict["width"] = self.width
+        rdict["height"] = self.height
+        rdict["x"] = self.x
+        rdict["y"] = self.y
+        return rdict

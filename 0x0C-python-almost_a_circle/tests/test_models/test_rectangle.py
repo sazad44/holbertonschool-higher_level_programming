@@ -76,7 +76,7 @@ class TestRectangle(unittest.TestCase):
         print(r1)
         self.assertEqual(CO.getvalue(), "[Rectangle] (12) 2/1 - 4/6\n")
         sys.stdout = sys.__stdout__
-        r2 = Rectangle(5, 5, 1, id = 1)
+        r2 = Rectangle(5, 5, 1, id=1)
         CO = io.StringIO()
         sys.stdout = CO
         print(r2)
@@ -129,7 +129,8 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = CO
         print(r1)
         self.assertEqual(CO.getvalue(), "[Rectangle] (89) 4/5 - 2/3\n")
-
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r1.update(1, "with")
     def test_update_1(self):
         """test_update_1 method"""
         r1 = Rectangle(10, 10, 10, 10, 1)
@@ -158,3 +159,13 @@ class TestRectangle(unittest.TestCase):
         print(r1)
         self.assertEqual(CO.getvalue(), "[Rectangle] (89) 1/3 - 4/2\n")
         sys.stdout = sys.__stdout__
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r1.update(1, 1, 1, "x")
+
+    def test_rectangle_to_dict(self):
+        """test_rectangle_to_dict"""
+        r1 = Rectangle(10, 2, 1, 9)
+        r2 = Rectangle(1, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2.update(**r1_dictionary)
+        self.assertTrue(r2.__str__() == r1.__str__())
