@@ -39,15 +39,16 @@ class Base:
             return cls(dictionary["id"])
         else:
             retcls = cls(1, 1, 1)
-            return retcls.update(**dictionary)
+            retcls.update(**dictionary)
+            return retcls
 
     @classmethod
     def load_from_file(cls):
         """load_from_file method"""
         try:
             with open(cls.__name__ + ".json", "r") as f:
-                objl = Base.from_json_string(f.read())
-            return [cls.create(**o) for o in objl]
+                objl = cls.from_json_string(f.read())
+            return [cls.create(**d) for d in objl]
         except:
             return []
 
@@ -56,22 +57,36 @@ class Base:
         """save_to_file_csv method"""
         if list_objs is None:
             list_objs = []
-        Csvl = [O.__dict__ for o in list_objs]
-        RectAttr = ["id", "width", "height", "x", "y"]
-        RectSq = ["id", "size", "x", "y"]
         if cls.__name__ == "Rectangle":
             with open(cls.__name__ + ".csv", "w+") as f:
-                csv.DictWriter(f, RectAttr)
+                RectAttr = ["id", "width", "height", "x", "y"]
+                writer = csv.DictWriter(f, RectAttr)
+                writer.writeheader()
+                for o in list_objs:
+                    writer.writerow(o.to_dictionary())
         elif cls.__name__ == "Square":
             with open(cls.__name__ + ".csv", "w+") as f:
-                csv.DictWriter(f, RectSq)
+                SqAttr = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(f, SqAttr)
+                writer.writeheader()
+                for o in list_objs:
+                    writer.writerow(o.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
         """load_from_file_csv"""
-        with open(cls.__name__ + ".csv", "r") as f:
+        with open(cls.__name__ + ".csv") as f:
+            objl = []
+            retl = []
             reader = csv.DictReader(f)
-            return reader
+            for row in reader:
+                objl.append(row)
+            for o in objl:
+                for key in o.keys():
+                    o[key] = int(o[key])
+            for d in objl:
+                retl.append(cls.create(**d))
+            return retl
 
     def __init__(self, id=None):
         """init magic method"""
