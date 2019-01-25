@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base Class Module"""
 import json
+import csv
 
 
 class Base:
@@ -34,9 +35,11 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """create class method"""
-        retcls = cls(1, 1, 1)
-        retcls.update(**dictionary)
-        return retcls
+        if cls.__name__ == "Base":
+            return cls(dictionary["id"])
+        else:
+            retcls = cls(1, 1, 1)
+            return retcls.update(**dictionary)
 
     @classmethod
     def load_from_file(cls):
@@ -47,6 +50,28 @@ class Base:
             return [cls.create(**o) for o in objl]
         except:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save_to_file_csv method"""
+        if list_objs is None:
+            list_objs = []
+        Csvl = [O.__dict__ for o in list_objs]
+        RectAttr = ["id", "width", "height", "x", "y"]
+        RectSq = ["id", "size", "x", "y"]
+        if cls.__name__ == "Rectangle":
+            with open(cls.__name__ + ".csv", "w+") as f:
+                csv.DictWriter(f, RectAttr)
+        elif cls.__name__ == "Square":
+            with open(cls.__name__ + ".csv", "w+") as f:
+                csv.DictWriter(f, RectSq)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """load_from_file_csv"""
+        with open(cls.__name__ + ".csv", "r") as f:
+            reader = csv.DictReader(f)
+            return reader
 
     def __init__(self, id=None):
         """init magic method"""

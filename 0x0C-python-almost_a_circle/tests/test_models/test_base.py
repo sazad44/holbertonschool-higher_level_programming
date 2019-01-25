@@ -57,9 +57,19 @@ class TestBase(unittest.TestCase):
         r2 = Rectangle.create(**r1_dictionary)
         self.assertFalse(r1 is r2)
         self.assertFalse(r1 == r2)
+        s1 = Square(3, 5, 1, id=1)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertFalse(s1 is s2)
+        self.assertFalse(s1 == s2)
+        b1 = Base(3)
+        b2 = Base.create(**{"id": 1})
+        self.assertFalse(b1 is b2)
+        self.assertFalse(b1 == b2)
 
     def test_g_load_from_file(self):
         """test_load_from_file test method"""
+        self.assertTrue(type(Base.load_from_file()) == list)
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         list_rectangles_input = [r1, r2]
@@ -77,3 +87,16 @@ class TestBase(unittest.TestCase):
 
         list_squares_output = Square.load_from_file()
         self.assertTrue(type(list_squares_output) == list)
+
+    def test_h_save_to_file_csv(self):
+        """test_save_to_file_csv"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(type(f.read()) == str)
+
+        list_rectangles_output = Rectangle.load_from_file_csv()
+        self.assertTrue(type(list_rectangles_output) == list)
