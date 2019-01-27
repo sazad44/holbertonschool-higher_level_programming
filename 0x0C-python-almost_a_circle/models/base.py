@@ -36,8 +36,13 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """create class method"""
+        if dictionary is None:
+            return
         if cls.__name__ == "Base":
-            return cls(dictionary["id"])
+            if "id" in dictionary.keys():
+                return cls(dictionary["id"])
+            else:
+                return cls()
         else:
             retcls = cls(1, 1, 1)
             retcls.update(**dictionary)
