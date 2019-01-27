@@ -28,9 +28,10 @@ class Base:
         if list_objs is None:
             with open(cls.__name__ + ".json", "w+") as f:
                 f.write("[]")
-        with open(cls.__name__ + ".json", "w+") as f:
-            f.write(Base.to_json_string([x.to_dictionary()
-                                         for x in list_objs]))
+        else:
+            with open(cls.__name__ + ".json", "w+") as f:
+                f.write(Base.to_json_string([x.to_dictionary()
+                                             for x in list_objs]))
 
     @classmethod
     def create(cls, **dictionary):
