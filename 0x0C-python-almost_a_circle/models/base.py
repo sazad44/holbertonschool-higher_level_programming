@@ -57,7 +57,7 @@ class Base:
         """save_to_file method"""
         if list_objs is None:
             with open(cls.__name__ + ".json", "w+") as f:
-                f.write("[]")
+                f.write(Base.to_json_string([]))
         else:
             with open(cls.__name__ + ".json", "w+") as f:
                 f.write(Base.to_json_string([x.to_dictionary()

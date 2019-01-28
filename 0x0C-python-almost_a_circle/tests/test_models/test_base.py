@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Base Class Test Module"""
 import unittest
+import io
+import sys
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -10,9 +12,11 @@ class TestBase(unittest.TestCase):
 
     def test_a_noinput(self):
         """test_noinput"""
+        b0 = Base(1)
+        self.assertEqual(b0.id, 1)
         b1 = Base()
         self.assertEqual(b1.id, 1)
-        b2 = Base()
+        b2 = Base(None)
         self.assertEqual(b2.id, 2)
         b3 = Base(12)
         self.assertEqual(b3.id, 12)
@@ -25,6 +29,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b1.id, 4)
         b2 = Base("wrong")
         self.assertEqual(b2.id, "wrong")
+        with self.assertRaises(TypeError):
+            b3 = Base(1, 2)
 
     def test_c_to_json_string(self):
         """test_to_json_string"""
@@ -35,6 +41,8 @@ class TestBase(unittest.TestCase):
         self.assertTrue(type(json_dictionary) == str)
         json_dictionary = Base.to_json_string([])
         self.assertTrue(json_dictionary == "[]")
+        json_dictionary = Base.to_json_string(None)
+        self.assertTrue(json_dictionary == "[]")
 
     def test_d_string_to_file(self):
         """test_string_to_file method"""
@@ -43,6 +51,16 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file([r1, r2])
         with open("Rectangle.json", "w+") as f:
             self.assertTrue(type(f.read()) == str)
+            f.seek(0)
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "w+") as f:
+            strrd = f.read()
+            self.assertTrue(type(strrd) == str)
+            CO = io.StringIO()
+            sys.stdout = CO
+            print(strrd)
+            self.assertEqual(CO.getvalue(), "\n")
+            sys.stdout = sys.__stdout__
 
     def test_e_from_json_string(self):
         """test_from_json_string method test"""
@@ -62,10 +80,6 @@ class TestBase(unittest.TestCase):
         s2 = Square.create(**s1_dictionary)
         self.assertFalse(s1 is s2)
         self.assertFalse(s1 == s2)
-        b1 = Base(3)
-        b2 = Base.create(**{"id": 1})
-        self.assertFalse(b1 is b2)
-        self.assertFalse(b1 == b2)
 
     def test_g_load_from_file(self):
         """test_load_from_file test method"""

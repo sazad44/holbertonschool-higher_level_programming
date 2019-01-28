@@ -49,6 +49,34 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.size, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             s1.size = "g"
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.size = []
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.size = {}
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.size = 4.0
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.size = True
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.x = "g"
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.x = []
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.x = {}
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.x = 4.0
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.x = True
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.y = "g"
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.y = []
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.y = {}
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.y = 4.0
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.y = True
 
     def test_square_update(self):
         """test_square_update method"""
@@ -74,11 +102,36 @@ class TestSquare(unittest.TestCase):
             s1.update(x="hi")
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             s1.update(y="hi")
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.update(size=[])
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.update(x=[])
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.update(y=[])
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.update(size=())
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.update(x=())
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.update(y=())
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.update(size=1.0)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.update(x=2.0)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.update(y=3.0)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s1.update(size=True)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s1.update(x=False)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s1.update(y=True)
 
     def test_square_to_dictionary(self):
         """test_square_to_dictionary"""
         s1 = Square(10, 2, 1)
         s2 = Square(1, 1)
         s1_dictionary = s1.to_dictionary()
+        self.assertTrue(type(s1_dictionary) == dict)
         s2.update(**s1_dictionary)
         self.assertTrue(s1.__str__() == s2.__str__())
