@@ -66,7 +66,7 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """create class method"""
-        if type(dictionary) == dict:
+        if type(dictionary) == dict and len(dictionary) > 0:
             retcls = cls(1, 1, 1)
             retcls.update(**dictionary)
             return retcls
