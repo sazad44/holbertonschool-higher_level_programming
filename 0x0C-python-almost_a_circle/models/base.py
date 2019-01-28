@@ -67,17 +67,9 @@ class Base:
     def create(cls, **dictionary):
         """create class method"""
         if type(dictionary) == dict:
-            if dictionary is None:
-                return
-            if cls.__name__ == "Base":
-                if "id" in dictionary.keys():
-                    return cls(dictionary["id"])
-                else:
-                    return cls()
-            else:
-                retcls = cls(1, 1, 1)
-                retcls.update(**dictionary)
-                return retcls
+            retcls = cls(1, 1, 1)
+            retcls.update(**dictionary)
+            return retcls
 
     @classmethod
     def load_from_file(cls):
