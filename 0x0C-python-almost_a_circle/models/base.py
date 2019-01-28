@@ -2,6 +2,7 @@
 """Base Class Module"""
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -22,6 +23,35 @@ class Base:
             return []
         return json.loads(json_string)
 
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """draw static method"""
+        if type(list_rectangles) == list and type(list_squares) == list:
+            turtle.screensize(500, 500)
+            x = -150
+            y = 150
+            for r in list_rectangles:
+                turtle.pu()
+                turtle.setpos(x, y)
+                turtle.pd()
+                for i in range(2):
+                    turtle.forward(r.width)
+                    turtle.right(90)
+                    turtle.forward(r.height)
+                    turtle.right(90)
+                x += 300
+            y *= -1
+            x -= 300
+            for s in list_squares:
+                turtle.pu()
+                turtle.setpos(x, y)
+                turtle.setheading(180)
+                turtle.pd()
+                for i in range(4):
+                    turtle.forward(s.size)
+                    turtle.right(90)
+                x -= 250
+
     @classmethod
     def save_to_file(cls, list_objs):
         """save_to_file method"""
@@ -36,17 +66,18 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """create class method"""
-        if dictionary is None:
-            return
-        if cls.__name__ == "Base":
-            if "id" in dictionary.keys():
-                return cls(dictionary["id"])
+        if type(dictionary) == dict:
+            if dictionary is None:
+                return
+            if cls.__name__ == "Base":
+                if "id" in dictionary.keys():
+                    return cls(dictionary["id"])
+                else:
+                    return cls()
             else:
-                return cls()
-        else:
-            retcls = cls(1, 1, 1)
-            retcls.update(**dictionary)
-            return retcls
+                retcls = cls(1, 1, 1)
+                retcls.update(**dictionary)
+                return retcls
 
     @classmethod
     def load_from_file(cls):
