@@ -67,9 +67,11 @@ class Base:
     def create(cls, **dictionary):
         """create class method"""
         if type(dictionary) == dict:
-            retcls = cls(1, 1, 1)
-            if len(dictionary) > 0:
-                retcls.update(**dictionary)
+            if cls.__name__ == "Rectangle":
+                retcls = cls(1, 1)
+            elif cls.__name__ == "Square":
+                retcls = cls(1)
+            retcls.update(**dictionary)
             return retcls
 
     @classmethod
