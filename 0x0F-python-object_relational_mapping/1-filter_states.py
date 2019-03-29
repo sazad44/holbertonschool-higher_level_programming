@@ -12,7 +12,7 @@ if __name__ == "__main__":
     states = db.cursor()
     states.execute("""SELECT * FROM states
                    WHERE name
-                   LIKE '%N%'
+                   LIKE BINARY 'N%'
                    ORDER BY 'states.id' ASC""")
     for state in states:
             print("({}, '{}')".format(state[0], state[1]))

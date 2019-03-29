@@ -11,7 +11,7 @@ if __name__ == "__main__":
                          db=sys.argv[3])
     states = db.cursor()
     states.execute("""SELECT * FROM states
-                   WHERE `name` = '%{}'
+                   WHERE BINARY `name` = '{}'
                    ORDER BY 'states.id' ASC""".format(sys.argv[4]))
     for state in states:
             print("({}, '{}')".format(state[0], state[1]))
