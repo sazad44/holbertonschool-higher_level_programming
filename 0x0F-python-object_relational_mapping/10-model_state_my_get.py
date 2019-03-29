@@ -11,7 +11,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     flag = 0
-    for instance in session.query(State).filter(State.name == func.binary(argv[4])).order_by(State.id):
+    instr = func.binary(argv[4])
+    for instance in session.query(State)\
+                           .filter(State.name == instr).order_by(State.id):
         print('{}'.format(instance.id))
         flag = 1
     if not flag:
