@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Py script to create State with City from database"""
-from sys import argv
 from relationship_state import Base, State
 from relationship_city import City
+from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
 
