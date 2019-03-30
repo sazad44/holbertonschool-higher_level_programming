@@ -3,8 +3,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-
-
+from relationship_city import City
 Base = declarative_base()
 
 
@@ -18,4 +17,6 @@ class State(Base):
                 nullable=False)
     name = Column(String(128),
                   nullable=False)
-    cities = relationship("City", cascade="all,delete", backref="state")
+    cities = relationship(City,
+                          cascade="all, delete, delete-orphan",
+                          back_populates='state')

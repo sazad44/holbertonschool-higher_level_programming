@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Define City class"""
+from model_state import Base, State
 from sqlalchemy import Integer, String, ForeignKey, Column
 from sqlalchemy.orm import relationship
+
 
 class City(Base):
     """City class with id and name attributes"""
@@ -12,4 +14,6 @@ class City(Base):
                 primary_key=True)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
-    state = relationship("State", back_populates="cities")
+    state = relationship(State,
+                         foreign_keys=[state_id],
+                         backref="state_id")
