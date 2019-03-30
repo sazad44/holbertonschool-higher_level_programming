@@ -15,6 +15,6 @@ if __name__ == "__main__":
     for sta in session.query(State):
         print("{}: {}".format(sta.id, sta.name))
         for cit in sta.cities:
-            print("\t{}: {}".format(cit.id, cit.name))
+            print("    {}: {}".format(cit.id, cit.name))
     session.close()
     engine.dispose()
