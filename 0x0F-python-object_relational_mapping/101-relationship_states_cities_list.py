@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Py script to list all objects and their corresponding children"""
+# Py script to list all objects and their corresponding children
 from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
