@@ -18,4 +18,3 @@ if __name__ == "__main__":
         for city in state.cities:
             print("    {}: {}".format(city.id, city.name))
     session.close()
-    engine.dispose()
