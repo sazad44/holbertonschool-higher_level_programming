@@ -4,6 +4,7 @@
 
 def find_peak(list_of_integers):
     """Function finds peak of list passed in"""
+    list_of_integers = tuple(list_of_integers)
     if len(list_of_integers) == 0:
         return None
     elif len(list_of_integers) == 1:
@@ -13,8 +14,8 @@ def find_peak(list_of_integers):
        and list_of_integers[halfIndex] > list_of_integers[halfIndex - 1]:
         return list_of_integers[halfIndex]
     resr = find_peak(list_of_integers[halfIndex + 1:])
-    if resr:
-        return resr
     resl = find_peak(list_of_integers[:halfIndex + 1])
-    if resl:
+    if resr and (resr > resl):
+        return resr
+    else:
         return resl
