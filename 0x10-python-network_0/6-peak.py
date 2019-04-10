@@ -7,8 +7,8 @@ def find_peak(list_of_integers):
     list_of_integers = tuple(list_of_integers)
     if len(list_of_integers) == 0:
         return None
-    elif len(list_of_integers) == 1:
-        return list_of_integers[0]
+    elif len(list_of_integers) <= 2:
+        return max(list_of_integers)
     halfIndex = int((len(list_of_integers) - 1) / 2)
     if list_of_integers[halfIndex] > list_of_integers[halfIndex + 1]\
        and list_of_integers[halfIndex] > list_of_integers[halfIndex - 1]:
