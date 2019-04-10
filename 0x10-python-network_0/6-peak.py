@@ -4,18 +4,17 @@
 
 def find_peak(list_of_integers):
     """Function finds peak of list passed in"""
-    loi = list_of_integers
-    if len(loi) == 0:
+    if len(list_of_integers) == 0:
         return None
-    elif len(loi) == 1:
-        return loi[0]
-    halfIndex = int((len(loi) - 1) / 2)
-    if loi[halfIndex] > loi[halfIndex + 1]\
-       and loi[halfIndex] > loi[halfIndex - 1]:
-        return loi[halfIndex]
-    resl = find_peak(loi[halfIndex + 1:])
-    resr = find_peak(loi[:halfIndex + 1])
-    if resl and resl > resr:
+    elif len(list_of_integers) == 1:
+        return list_of_integers[0]
+    halfIndex = int((len(list_of_integers) - 1) / 2)
+    if list_of_integers[halfIndex] > list_of_integers[halfIndex + 1]\
+       and list_of_integers[halfIndex] > list_of_integers[halfIndex - 1]:
+        return list_of_integers[halfIndex]
+    resl = find_peak(list_of_integers[halfIndex + 1:])
+    resr = find_peak(list_of_integers[:halfIndex + 1])
+    if resl and (resl > resr):
         return resl
     elif resr:
         return resr
