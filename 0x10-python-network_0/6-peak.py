@@ -12,9 +12,9 @@ def find_peak(list_of_integers):
     if list_of_integers[halfIndex] > list_of_integers[halfIndex + 1]\
        and list_of_integers[halfIndex] > list_of_integers[halfIndex - 1]:
         return list_of_integers[halfIndex]
-    resl = find_peak(list_of_integers[halfIndex + 1:])
-    resr = find_peak(list_of_integers[:halfIndex + 1])
-    if resl and (resl > resr):
-        return resl
-    elif resr:
+    resr = find_peak(list_of_integers[halfIndex + 1:])
+    if resr:
         return resr
+    resl = find_peak(list_of_integers[:halfIndex + 1])
+    if resl:
+        return resl
