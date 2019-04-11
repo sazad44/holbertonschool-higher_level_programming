@@ -18,8 +18,7 @@ def find_peak(list_of_integers):
        and loi[halfIndex] > loi[halfIndex - 1]:
         return loi[halfIndex]
     resr = find_peak(loi[halfIndex + 1:])
-    resl = find_peak(loi[:halfIndex + 1])
-    if resr and (resr > resl):
+    if resr:
         return resr
-    else:
-        return resl
+    resl = find_peak(loi[:halfIndex + 1])
+    return resl
