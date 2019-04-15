@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+"""Py script to take in a letter and send a POST request returning JSON info"""
+import requests
+import json
+from sys import argv
+
+if __name__ == "__main__":
+    try:
+        q = argv[1]
+        url = 'http://0.0.0.0:5000/search_user'
+        response = requests.post(url, data={'q': q})
+        responseDict = json.loads(response.text)
+        if len(responseDict.keys()) == 0:
+            print("No result")
+        else:
+            id = responseDict.get('id')
+            name = responseDict.get('name')
+            print("[{}] {}".format(id, name))
+    except ValueError:
+        print("Not a valid JSON")
+    except IndexError:
+        print("No Result")
