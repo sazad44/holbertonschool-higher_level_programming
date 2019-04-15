@@ -5,7 +5,9 @@ from sys import argv
 
 if __name__ == "__main__":
     response = requests.get(argv[1])
-    if int(response.status_code) >= 400:
-        print("Error code: {}".format(response.status_code))
-    else:
+    try:
+        if int(response.status_code) >= 400:
+            response.raise_for_status()
         print(response.text)
+    except requests.exceptions.HTTPError as err:
+        print("Error code: {}".format(response.status_code))
