@@ -19,7 +19,7 @@ if __name__ == "__main__":
     response = requests.get('https://api.twitter.com/1.1/search/tweets.json',
                             headers={'authorization': 'Bearer {}'
                                      .format(bToken)},
-                            data={'q': argv[3].encode('utf-8')}).json()
+                            params={'q': argv[3].encode('utf-8')}).json()
     try:
         for i in range(5):
             id = response['statuses'][i]['id']
