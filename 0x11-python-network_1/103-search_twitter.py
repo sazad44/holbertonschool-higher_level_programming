@@ -7,7 +7,7 @@ from sys import argv
 if __name__ == "__main__":
     bD = 'grant_type=client_credentials'.encode('utf-8')
     cT = 'application/x-www-form-urlencoded;charset=UTF--8'
-    secretKey = argv[1] + argv[2]
+    secretKey = argv[1] + ":" + argv[2]
     secretKey = secretKey.encode('utf-8')
     secretKeyB64 = base64.b64encode(secretKey).decode('utf-8')
     headersC = {'authorization': 'Basic {}'.format(secretKeyB64),
