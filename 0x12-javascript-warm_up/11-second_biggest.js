@@ -10,5 +10,9 @@ if (process.argv.length < 4) {
       maxOne = process.argv[i];
     }
   }
-  console.log(maxTwo);
+  if (maxTwo !== Number.MIN_VALUE) {
+    console.log(maxTwo);
+  } else {
+    console.log(maxOne);
+  }
 }
