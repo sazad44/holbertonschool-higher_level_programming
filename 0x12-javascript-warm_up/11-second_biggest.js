@@ -5,9 +5,9 @@ if (process.argv.length < 4) {
   console.log(0);
 } else {
   for (let i = 0; i < process.argv.length; i++) {
-    if (process.argv[i] > maxOne) {
+    if (Number(process.argv[i]) > maxOne) {
       maxTwo = maxOne;
-      maxOne = process.argv[i];
+      maxOne = Number(process.argv[i]);
     }
   }
   if (maxTwo !== Number.MIN_VALUE) {
