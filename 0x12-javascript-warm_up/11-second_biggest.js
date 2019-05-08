@@ -13,6 +13,6 @@ if (process.argv.length < 4) {
   if (maxTwo !== Number.MIN_VALUE) {
     console.log(maxTwo);
   } else {
-    console.log(10);
+    console.log(maxOne);
   }
 }
