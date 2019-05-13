@@ -8,11 +8,11 @@ class Rectangle {
     }
   }
   // Method
-  print() {
+  print () {
     for (let h = 0; h < this.height; h++) {
       let array = [];
       for (let w = 0; w < this.width; w++) {
-	array.push('X');
+        array.push('X');
       }
       console.log(array.join(''));
     }
