@@ -10,7 +10,7 @@ class Rectangle {
       for (let h = 0; h < this.height; h++) {
         let array = [];
         for (let w = 0; w < this.width; w++) {
-          array.push('X');
+          array.push('x');
         }
         console.log(array.join(''));
       }
