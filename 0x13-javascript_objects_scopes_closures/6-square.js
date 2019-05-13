@@ -33,8 +33,22 @@ class Rectangle {
 class Square extends Rectangle {
   constructor (size) {
     super(size, size);
+    this.charPrint = function (c) {
+      if (typeof c === 'undefined') {
+        c = 'X';
+      }
+      for (let h = 0; h < this.height; h++) {
+        let array = [];
+        for (let w = 0; w < this.width; w++) {
+          array.push(c);
+        }
+        console.log(array.join(''));
+      }
+    };
   }
-  // Prints square with specified character
+}
+
+/* Prints square with specified character
   charPrint (c) {
     if (typeof c === 'undefined') {
       c = 'X';
@@ -48,6 +62,7 @@ class Square extends Rectangle {
     }
   }
 }
+*/
 
 module.exports = Rectangle;
 module.exports = Square;
