@@ -8,11 +8,10 @@ class Rectangle {
     }
     this.print = function () {
       for (let h = 0; h < this.height; h++) {
-        let array = [];
         for (let w = 0; w < this.width; w++) {
-          array.push('x');
+	  process.stdout.write('X');
         }
-        console.log(array.join(''));
+	process.stdout.write('\n')
       }
     };
   }
