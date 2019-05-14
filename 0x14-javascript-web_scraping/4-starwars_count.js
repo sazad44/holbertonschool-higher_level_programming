@@ -15,6 +15,5 @@ request(process.argv[2], function (error, response, body) {
       console.log(count);
     }
   } catch (e) {
-    console.log(3);
   }
 });
