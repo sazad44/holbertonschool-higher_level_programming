@@ -5,11 +5,10 @@ fs.stat(process.argv[2], function (error, stats) {
   if (error) throw error;
   fs.open(process.argv[2], 'r', function (error, fd) {
     if (error) throw error;
-    let buffer = new Buffer.Alloc(stats.size);
-    fs.read(fd, buffer, 0, buffer.length, null, function (error, bytesRead, buffer) {
+    fs.readFile(process.argv[2], function read(err, data) {
       if (error) throw error;
-      let data = buffer.toString('utf-8', 0, buffer.length);
-      fs.writeFile(process.argv[4], data, function (err) {
+      let fa = data.toString('utf-8', 0, 100);
+      fs.writeFile(process.argv[4], fa, function (err) {
         if (err) throw err;
       });
     });
@@ -20,11 +19,10 @@ fs.stat(process.argv[3], function (error, stats) {
   if (error) throw error;
   fs.open(process.argv[3], 'r', function (error, fd) {
     if (error) throw error;
-    let buffer = new Buffer.Alloc(stats.size);
-    fs.read(fd, buffer, 0, buffer.length, null, function (error, bytesRead, buffer) {
+    fs.readFile(process.argv[3], function read(err, data) {
       if (error) throw error;
-      let data = buffer.toString('utf-8', 0, buffer.length);
-      fs.appendFile(process.argv[4], data, function (err) {
+      let fa = data.toString('utf-8', 0, 100);
+      fs.appendFile(process.argv[4], fa, function (err) {
         if (err) throw err;
       });
     });
