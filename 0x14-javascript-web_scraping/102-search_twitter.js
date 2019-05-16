@@ -20,9 +20,11 @@ request.post({ url: 'https://api.twitter.com/oauth2/token', headers: { 'Authoriz
     if (error) console.log(error);
     tweetDict = JSON.parse(body);
     for (let i = 0; i < 5; i++) {
-      let status = tweetDict.statuses[i];
-      let output = '[' + status.id + '] ' + status.text + ' by ' + status.user.name;
-      console.log(output);
+      if (tweetDict.statuses[i]) {
+	let status = tweetDict.statuses[i];
+	let output = '[' + status.id + '] ' + status.text + ' by ' + status.user.name;
+	console.log(output);
+      }
     }
   });
 });
