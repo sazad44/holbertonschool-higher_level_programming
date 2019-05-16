@@ -21,9 +21,9 @@ request.post({ url: 'https://api.twitter.com/oauth2/token', headers: { 'Authoriz
     tweetDict = JSON.parse(body);
     for (let i = 0; i < 5; i++) {
       if (tweetDict.statuses[i]) {
-	let status = tweetDict.statuses[i];
-	let output = '[' + status.id + '] ' + status.text + ' by ' + status.user.name;
-	console.log(output);
+        let status = tweetDict.statuses[i];
+        let output = '[' + status.id + '] ' + status.text + ' by ' + status.user.name;
+        console.log(output);
       }
     }
   });
